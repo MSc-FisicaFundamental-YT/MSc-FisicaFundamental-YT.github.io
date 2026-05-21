@@ -92,6 +92,37 @@ body {
   font-size: 19px;
 }
 
+/* Nuevos Estilos para la Sección de Logos */
+.logos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.logo-item {
+  flex: 1 1 calc(20% - 30px); /* 5 logos por fila en pantallas grandes */
+  min-width: 140px;
+  max-width: 180px;
+  text-align: center;
+}
+
+.logo-item img {
+  max-width: 100%;
+  height: auto;
+  max-height: 80px; /* Limita la altura para homogeneizar logos de diferentes proporciones */
+  object-fit: contain;
+  filter: grayscale(40%) opacity(85%);
+  transition: all 0.3s ease;
+}
+
+.logo-item img:hover {
+  filter: grayscale(0%) opacity(100%);
+  transform: scale(1.05);
+}
+
 .footer {
   background: #111;
   color: white;
@@ -109,7 +140,17 @@ body {
   .hero-section p {
     font-size: 20px;
   }
+  
+  .logo-item {
+    flex: 1 1 calc(33.33% - 20px); /* 3 logos por fila en tablets */
+  }
 
+}
+
+@media screen and (max-width: 480px) {
+  .logo-item {
+    flex: 1 1 calc(50% - 20px); /* 2 logos por fila en móviles pequeños */
+  }
 }
 
 </style>
@@ -342,7 +383,6 @@ body {
 
 </section>
 
-<!-- Registration section start -->
 <section id="registration" class="content-section">
   <div class="container">
     <div class="section-title">
@@ -381,8 +421,33 @@ body {
     </div>
   </div>
 </section>
-<!-- Registration section end -->
-
+<section class="content-section" style="background-color: #ffffff; border-top: 1px solid #eef2f7;">
+  <div class="container">
+    <div class="logos-container">
+      
+      <div class="logo-item">
+        <img src="images/logo1.png" alt="Logo Institución 1">
+      </div>
+      
+      <div class="logo-item">
+        <img src="images/logo2.png" alt="Logo Institución 2">
+      </div>
+      
+      <div class="logo-item">
+        <img src="images/logo3.png" alt="Logo Institución 3">
+      </div>
+      
+      <div class="logo-item">
+        <img src="images/logo4.png" alt="Logo Institución 4">
+      </div>
+      
+      <div class="logo-item">
+        <img src="images/logo5.png" alt="Logo Institución 5">
+      </div>
+      
+    </div>
+  </div>
+</section>
 <footer class="footer">
 
   <div class="container">
