@@ -14,46 +14,48 @@
 
 body {
   font-family: Arial, sans-serif;
-  line-height: 1.8;
+  line-height: 1.9;
+  font-size: 18px; /* Fuente general más grande */
 }
 
 .hero-section {
   background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
               url('images/sistemas_complejos.png') center center/cover no-repeat;
   color: white;
-  padding: 120px 0;
+  padding: 140px 0;
   text-align: center;
 }
 
 .hero-section h1 {
-  font-size: 54px;
+  font-size: 58px;
   font-weight: bold;
 }
 
 .hero-section p {
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .section-title {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   text-align: center;
 }
 
 .section-title h2 {
-  font-size: 40px;
+  font-size: 44px;
   color: #3498db;
 }
 
 .content-section {
-  padding: 60px 0;
+  padding: 70px 0;
 }
 
 .info-card {
   background: #fff;
-  padding: 25px;
+  padding: 35px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   margin-bottom: 30px;
+  text-align: center; /* Centrado de texto dentro de las tarjetas */
   transition: all 0.3s ease;
 }
 
@@ -61,10 +63,17 @@ body {
   transform: translateY(-5px);
 }
 
+.info-card ul {
+  display: inline-block;
+  text-align: left; /* Mantiene las viñetas alineadas pero el bloque centrado */
+}
+
 .timeline {
   border-left: 4px solid #3498db;
   padding-left: 20px;
   margin-top: 30px;
+  display: inline-block;
+  text-align: left;
 }
 
 .timeline-item {
@@ -73,28 +82,32 @@ body {
 
 .timeline-item h4 {
   color: #3498db;
+  font-size: 22px;
 }
 
 .speaker-list li,
+.organizer-list li,
 .sponsor-list li {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  font-size: 19px;
 }
 
 .footer {
   background: #111;
   color: white;
   text-align: center;
-  padding: 25px 0;
+  padding: 35px 0;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 768px) {
 
   .hero-section h1 {
-    font-size: 36px;
+    font-size: 38px;
   }
 
   .hero-section p {
-    font-size: 18px;
+    font-size: 20px;
   }
 
 }
@@ -140,16 +153,16 @@ body {
           <p>
             Las <strong>III Jornadas de Sistemas Complejos y Dinámica Social</strong> constituyen un espacio 
             interdisciplinario diseñado para explorar los avances, metodologías y aplicaciones de las ciencias 
-            de la complejidad en la comprensión de los fenómenos sociales[cite: 1, 2, 3]. Tras el éxito de sus dos ediciones 
+            de la complejidad en la comprensión de los fenómenos sociales. Tras el éxito de sus dos ediciones 
             anteriores celebradas en la ciudad de Cuenca, este encuentro científico se traslada a las instalaciones 
-            de Yachay Tech[cite: 3, 4].
+            de Yachay Tech.
           </p>
 
           <p>
             Esta iniciativa forma parte activa de las agendas de investigación de la <strong>Red Interdisciplinaria de Sistemas Complejos (RISC)</strong>, 
             organismo registrado y respaldado por la REDU, en conjunto con el <strong>Grupo Interdisciplinario de Sistemas Complejos (GISC)</strong> 
-            afiliado a Yachay Tech[cite: 3]. Asimismo, las jornadas se integrarán de manera presencial con las actividades académicas 
-            de la asignatura de <em>Supercomputación y Simulación en Física</em>[cite: 4].
+            afiliado a Yachay Tech. Asimismo, las jornadas se integrarán de manera presencial con las actividades académicas 
+            de la asignatura de <em>Supercomputación y Simulación en Física</em>.
           </p>
 
           <p>
@@ -157,9 +170,9 @@ body {
           </p>
 
           <ul>
-            <li>Asistir a ponencias magistrales dictadas por destacados investigadores nacionales de forma presencial e internacionales vía online[cite: 5].</li>
-            <li>Analizar las dinámicas colectivas y estructuras sociales desde una perspectiva analítica y computacional[cite: 1, 2].</li>
-            <li>Involucrar de manera directa a estudiantes de posgrado en la discusión de fronteras científicas[cite: 3].</li>
+            <li>Asistir a ponencias magistrales dictadas por destacados investigadores nacionales de forma presencial e internacionales vía online.</li>
+            <li>Analizar las dinámicas colectivas y estructuras sociales desde una perspectiva analítica y computacional.</li>
+            <li>Involucrar de manera directa a estudiantes de posgrado en la discusión de fronteras científicas.</li>
           </ul>
 
         </div>
@@ -186,11 +199,11 @@ body {
           <h3><i class="fa fa-calendar"></i> ¿Cuándo?</h3>
 
           <p>
-            El evento se llevará a cabo en una sola jornada el día <strong>viernes, 5 de Junio de 2026</strong>[cite: 4].
+            El evento se llevará a cabo en una sola jornada el día <strong>viernes, 5 de Junio de 2026</strong>.
           </p>
           
           <p>
-            Horario tentativo estructurado en dos bloques[cite: 2]:<br>
+            Horario tentativo estructurado en dos bloques:<br>
             <strong>Mañana:</strong> 9:00 - 12:30<br>
             <strong>Tarde:</strong> 14:00 - 17:30
           </p>
@@ -206,11 +219,11 @@ body {
           <h3><i class="fa fa-map-marker"></i> ¿Dónde?</h3>
 
           <p>
-            El evento se desarrollará de forma presencial en las instalaciones de la <strong>Universidad Yachay Tech</strong>[cite: 4].
+            El evento se desarrollará de forma presencial en las instalaciones de la <strong>Universidad Yachay Tech</strong>.
           </p>
 
           <p>
-            Contaremos con un formato híbrido que combinará la participación presencial de invitados nacionales con ponentes internacionales conectados en modalidad online[cite: 5].
+            Contaremos con un formato híbrido que combinará la participación presencial de invitados nacionales con ponentes internacionales conectados en modalidad online.
           </p>
 
         </div>
@@ -229,18 +242,14 @@ body {
   <div class="container">
 
     <div class="section-title">
-      <h2>Conferencistas e Invitados</h2>
+      <h2>Organizadores</h2>
     </div>
 
     <div class="info-card">
 
-      <ul class="speaker-list" style="list-style-type: none; padding-left: 0;">
-        <li><i class="fa fa-user" style="color: #3498db; margin-right: 10px;"></i> <strong>Orlando Alvarez</strong> — Universidad Católica de Cuenca, Ecuador [cite: 3]</li>
-        <li><i class="fa fa-user" style="color: #3498db; margin-right: 10px;"></i> <strong>Mario Cosenza</strong> — Universidad Yachay Tech, Ecuador [cite: 3]</li>
-        <li><i class="fa fa-user" style="color: #3498db; margin-right: 10px;"></i> <strong>Esther Gutiérrez</strong> — ESPOL, Ecuador</li>
-        <li><i class="fa fa-video-camera" style="color: #e74c3c; margin-right: 10px;"></i> <strong>José Luis Herrera-Diestra</strong> (Virtual) — Tarleton State University, USA</li>
-        <li><i class="fa fa-video-camera" style="color: #e74c3c; margin-right: 10px;"></i> <strong>Juan Sebastian Velez</strong> (Virtual) — Okinawa Institute of Technology, Japón</li>
-        <li><i class="fa fa-video-camera" style="color: #e74c3c; margin-right: 10px;"></i> <strong>Mateo Carpio</strong> (Virtual) — Instituto de Física Interdisciplinar y Sistemas Complejos, España</li>
+      <ul class="organizer-list" style="list-style-type: none; padding-left: 0;">
+        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Dr. Orlando Alvarez</strong> — Universidad Católica de Cuenca</li>
+        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Dr. Mario Cosenza</strong> — Universidad Yachay Tech</li>
       </ul>
 
     </div>
@@ -255,29 +264,19 @@ body {
   <div class="container">
 
     <div class="section-title">
-      <h2>Programa Tentativo</h2>
+      <h2>Conferencistas e Invitados</h2>
     </div>
 
     <div class="info-card">
 
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <h4>09:00 - 12:30</h4>
-          <p><strong>Sesión de la Mañana:</strong> Incluye un ciclo de 3 charlas magistrales presenciales y virtuales con espacio para <em>coffee break</em>[cite: 2, 5].</p>
-        </div>
-
-        <div class="timeline-item">
-          <h4>12:30 - 14:00</h4>
-          <p><strong>Receso / Almuerzo</strong></p>
-        </div>
-
-        <div class="timeline-item">
-          <h4>14:00 - 17:30</h4>
-          <p><strong>Sesión de la Tarde:</strong> Incluye un ciclo de 3 charlas magistrales y un espacio para <em>coffee break</em>[cite: 2].</p>
-        </div>
-
-      </div>
+      <ul class="speaker-list" style="list-style-type: none; padding-left: 0;">
+        <li><i class="fa fa-user" style="color: #3498db; margin-right: 10px;"></i> <strong>Orlando Alvarez</strong> — Universidad Católica de Cuenca, Ecuador</li>
+        <li><i class="fa fa-user" style="color: #3498db; margin-right: 10px;"></i> <strong>Mario Cosenza</strong> — Universidad Yachay Tech, Ecuador</li>
+        <li><i class="fa fa-user" style="color: #3498db; margin-right: 10px;"></i> <strong>Esther Gutiérrez</strong> — ESPOL, Ecuador</li>
+        <li><i class="fa fa-video-camera" style="color: #e74c3c; margin-right: 10px;"></i> <strong>José Luis Herrera-Diestra</strong> (Virtual) — Tarleton State University, USA</li>
+        <li><i class="fa fa-video-camera" style="color: #e74c3c; margin-right: 10px;"></i> <strong>Juan Sebastian Velez</strong> (Virtual) — Okinawa Institute of Technology, Japón</li>
+        <li><i class="fa fa-video-camera" style="color: #e74c3c; margin-right: 10px;"></i> <strong>Mateo Carpio</strong> (Virtual) — Instituto de Física Interdisciplinar y Sistemas Complejos, España</li>
+      </ul>
 
     </div>
 
@@ -291,15 +290,51 @@ body {
   <div class="container">
 
     <div class="section-title">
+      <h2>Programa Tentativo</h2>
+    </div>
+
+    <div class="info-card">
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h4>09:00 - 12:30</h4>
+          <p><strong>Sesión de la Mañana:</strong> Incluye un ciclo de 3 charlas magistrales presenciales y virtuales con espacio para <em>coffee break</em>.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>12:30 - 14:00</h4>
+          <p><strong>Receso / Almuerzo</strong></p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>14:00 - 17:30</h4>
+          <p><strong>Sesión de la Tarde:</strong> Incluye un ciclo de 3 charlas magistrales y un espacio para <em>coffee break</em>.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="content-section" style="background-color: #eef2f7;">
+
+  <div class="container">
+
+    <div class="section-title">
       <h2>Con el Aval y Soporte de</h2>
     </div>
 
     <div class="info-card">
 
       <ul class="sponsor-list" style="list-style-type: none; padding-left: 0; text-align: center;">
-        <li style="font-size: 18px; margin-bottom: 15px;"><i class="fa fa-university" style="color: #3498db; margin-right: 10px;"></i> Red Interdisciplinaria de Sistemas Complejos (RISC) — Apoyada por REDU [cite: 3]</li>
-        <li style="font-size: 18px; margin-bottom: 15px;"><i class="fa fa-graduation-cap" style="color: #3498db; margin-right: 10px;"></i> Maestría en Física Fundamental — Universidad Yachay Tech [cite: 3]</li>
-        <li style="font-size: 18px; margin-bottom: 15px;"><i class="fa fa-flask" style="color: #3498db; margin-right: 10px;"></i> Grupo Interdisciplinario de Sistemas Complejos (GISC) [cite: 3]</li>
+        <li style="margin-bottom: 15px;"><i class="fa fa-university" style="color: #3498db; margin-right: 10px;"></i> Red Interdisciplinaria de Sistemas Complejos (RISC) — Apoyada por REDU</li>
+        <li style="margin-bottom: 15px;"><i class="fa fa-graduation-cap" style="color: #3498db; margin-right: 10px;"></i> Maestría en Física Fundamental — Universidad Yachay Tech</li>
+        <li style="margin-bottom: 15px;"><i class="fa fa-flask" style="color: #3498db; margin-right: 10px;"></i> Grupo Interdisciplinario de Sistemas Complejos (GISC)</li>
       </ul>
 
     </div>
@@ -314,11 +349,11 @@ body {
   <div class="container">
 
     <p style="margin-bottom: 5px; font-weight: bold;">
-      III Jornadas de Sistemas Complejos y Dinámica Social — 2026 [cite: 3]
+      III Jornadas de Sistemas Complejos y Dinámica Social — 2026
     </p>
 
-    <p style="font-size: 14px; color: #bbb;">
-      RISC | GISC | Maestría en Física Fundamental de la Universidad Yachay Tech [cite: 3]
+    <p style="font-size: 15px; color: #bbb;">
+      RISC | GISC | Maestría en Física Fundamental de la Universidad Yachay Tech
     </p>
 
   </div>
