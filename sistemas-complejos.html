@@ -2,612 +2,1289 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>III Jornadas de Sistemas Complejos y Dinámica Social — Junio 2026</title>
 
-<title>III Jornadas de Sistemas Complejos y Dinámica Social - Junio 2026</title>
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,500;1,9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 <style>
-
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.9;
-  font-size: 18px; /* Fuente general más grande */
+:root{
+  --ink:#0d1520;             /* deep midnight navy */
+  --ink-2:#141d2b;
+  --ink-3:#1c2638;
+  --paper:#f1ebe0;           /* warm ivory */
+  --paper-2:#e3dac6;
+  --paper-dim:#a89e8a;
+  --rule:#2a3346;
+  --rule-paper:#c9bea4;
+  --accent:#a8884f;          /* burnished brass / antique gold */
+  --accent-2:#7a1f2b;        /* oxblood burgundy */
+  --accent-3:#3d5878;        /* slate blue */
+  --serif:'Fraunces', 'Times New Roman', serif;
+  --body:'Newsreader', Georgia, serif;
+  --mono:'JetBrains Mono', ui-monospace, monospace;
 }
 
-.hero-section {
-  background: url('images/sistemas_complejos.png') center center/cover no-repeat;;
-  color: white;
-  padding: 180px 0;
-  text-align: center;
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--body);
+  font-size:20px;
+  line-height:1.7;
+  font-weight:400;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 
-.hero-section h1 {
-  font-size: 65px;
-  font-weight: bold;
+/* film grain overlay */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index:9999;
+  opacity:.06;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
-.hero-section p {
-  font-size: 30px;
+::selection{background:var(--accent);color:var(--ink)}
+
+/* ---------- TOP STRIP ---------- */
+.topstrip{
+  position:fixed; top:0; left:0; right:0;
+  z-index:50;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:14px 28px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--paper-dim);
+  background:linear-gradient(180deg, rgba(10,11,15,.85), rgba(10,11,15,0));
+  backdrop-filter:blur(6px);
+}
+.topstrip .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;margin-right:8px;
+  box-shadow:0 0 12px var(--accent);
+  animation:pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  min-height:100vh;
+  padding:120px 6vw 60px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(168,136,79,.10), transparent 55%),
+    radial-gradient(ellipse at 10% 90%, rgba(61,88,120,.10), transparent 55%),
+    var(--ink);
+}
+.network-canvas{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  z-index:0;
+  opacity:1;
+}
+.hero-inner{position:relative; z-index:2; max-width:1400px; margin:0 auto; width:100%}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:30px;
+  display:flex; align-items:center; gap:14px;
+}
+.eyebrow .bar{flex:0 0 60px; height:1px; background:var(--accent)}
+
+.hero h1{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:clamp(48px, 8.5vw, 132px);
+  line-height:.92;
+  letter-spacing:-.03em;
+  margin:0 0 40px;
+  color:var(--paper);
+  font-variation-settings:"opsz" 144;
+}
+.hero h1 em{
+  font-style:italic;
+  font-weight:500;
+  color:var(--accent);
+  font-variation-settings:"opsz" 144;
+}
+.hero h1 .amp{
+  font-style:italic; font-weight:300;
+  color:var(--paper-dim);
+  margin:0 .15em;
 }
 
-.section-title {
-  margin-bottom: 40px;
-  text-align: center;
+.hero-meta{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:24px;
+  padding-top:28px;
+  border-top:1px solid var(--rule);
+  margin-top:auto;
+}
+.hero-meta .cell{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.hero-meta .cell .k{color:var(--paper-dim); margin-bottom:8px; display:block; font-size:11px}
+.hero-meta .cell .v{color:var(--paper); font-weight:500; font-size:16px; letter-spacing:.06em}
+
+@media(max-width:780px){
+  .hero-meta{grid-template-columns:repeat(2,1fr)}
 }
 
-.section-title h2 {
-  font-size: 44px;
-  color: #3498db;
+/* ---------- SECTIONS ---------- */
+section.s{
+  position:relative;
+  padding:120px 6vw;
+  max-width:1400px;
+  margin:0 auto;
+}
+.s-num{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:18px;
+}
+.s-title{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:clamp(36px, 5.4vw, 76px);
+  line-height:1;
+  letter-spacing:-.025em;
+  margin:0 0 60px;
+  font-variation-settings:"opsz" 96;
+}
+.s-title em{font-style:italic; color:var(--accent); font-weight:500}
+
+/* ---------- ABOUT ---------- */
+.about-grid{
+  display:grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap:80px;
+  align-items:start;
+}
+.about-grid aside{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--paper-dim);
+  border-top:1px solid var(--rule);
+  padding-top:20px;
+  position:sticky; top:80px;
+}
+.about-grid aside .marker{color:var(--accent); display:block; margin-bottom:10px}
+.about-text p{
+  font-family:var(--body);
+  font-size:23px;
+  line-height:1.6;
+  font-weight:400;
+  color:var(--paper);
+  margin:0 0 28px;
+  max-width:60ch;
+}
+.about-text p:first-of-type::first-letter{
+  font-family:var(--serif);
+  font-weight:500;
+  font-style:italic;
+  font-size:5.5em;
+  float:left;
+  line-height:.85;
+  margin:.05em .12em 0 -.05em;
+  color:var(--accent);
+}
+.about-text strong{color:var(--accent); font-weight:500}
+.about-text ul{
+  list-style:none; padding:0; margin:30px 0 0;
+  border-top:1px solid var(--rule);
+}
+.about-text ul li{
+  padding:24px 0 24px 80px;
+  border-bottom:1px solid var(--rule);
+  position:relative;
+  font-size:20px;
+  line-height:1.55;
+}
+.about-text ul li::before{
+  counter-increment:item;
+  content:"§ " counter(item, decimal-leading-zero);
+  position:absolute; left:0; top:24px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--accent);
+}
+.about-text ul{counter-reset:item}
+
+@media(max-width:880px){
+  .about-grid{grid-template-columns:1fr; gap:40px}
+  .about-grid aside{position:static}
 }
 
-.content-section {
-  padding: 70px 0;
+/* ---------- INFO PAPER PANEL ---------- */
+.paper-panel{
+  background:var(--paper);
+  color:var(--ink);
+  margin:0;
+  padding:120px 0;
+}
+.paper-panel .s-num{color:var(--ink); opacity:.6; font-weight:500}
+.paper-panel .s-title{color:var(--ink); font-weight:600}
+.paper-panel .s-title em{color:var(--ink); font-weight:700; border-bottom:4px solid var(--accent-2); padding-bottom:.05em}
+
+.when-where{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  border-top:1px solid var(--rule-paper);
+  border-bottom:1px solid var(--rule-paper);
+}
+.ww-card{
+  padding:50px 50px;
+  border-right:1px solid var(--rule-paper);
+}
+.ww-card:last-child{border-right:none}
+.ww-card .label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--ink);
+  opacity:.55;
+  margin-bottom:24px;
+  display:flex; align-items:center; gap:10px;
+}
+.ww-card .label::before{
+  content:""; width:8px; height:8px; background:var(--accent-2); border-radius:50%;
+}
+.ww-card h3{
+  font-family:var(--serif);
+  font-weight:600;
+  font-style:italic;
+  font-size:44px;
+  line-height:1.05;
+  margin:0 0 24px;
+  letter-spacing:-.02em;
+  color:var(--ink);
+}
+.ww-card p{
+  font-family:var(--body);
+  font-size:20px;
+  line-height:1.6;
+  color:#3a3528;
+  margin:0 0 14px;
+}
+.ww-card strong{color:var(--ink); font-weight:500}
+.ww-card .schedule-grid{
+  margin-top:24px;
+  display:grid; grid-template-columns:auto 1fr; gap:8px 22px;
+  font-family:var(--mono);
+  font-size:15px;
+  letter-spacing:.06em;
+}
+.ww-card .schedule-grid span:nth-child(odd){color:var(--ink); opacity:.55}
+
+.map-wrap{
+  margin-top:30px;
+  border:1px solid var(--rule-paper);
+  position:relative;
+}
+.map-wrap iframe{display:block; width:100%; height:280px; border:0; filter:grayscale(1) contrast(1.05)}
+.map-wrap::after{
+  content:"01°24'24.3\"N · 78°10'21.9\"W";
+  position:absolute; left:12px; bottom:10px;
+  background:var(--paper);
+  padding:4px 10px;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.15em;
+  border:1px solid var(--rule-paper);
 }
 
-.info-card {
-  background: #fff;
-  padding: 35px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
-  text-align: center; /* Centrado de texto dentro de las tarjetas */
-  transition: all 0.3s ease;
+@media(max-width:880px){
+  .when-where{grid-template-columns:1fr}
+  .ww-card{border-right:none; border-bottom:1px solid var(--rule-paper)}
+  .ww-card:last-child{border-bottom:none}
+  .ww-card{padding:40px 6vw}
 }
 
-.info-card:hover {
-  transform: translateY(-5px);
+/* ---------- REGISTRATION ---------- */
+.register{
+  background:var(--ink);
+  padding:120px 6vw;
+}
+.register-inner{
+  max-width:1400px; margin:0 auto;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:80px;
+  align-items:center;
+}
+.register h2{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:clamp(40px, 6vw, 88px);
+  line-height:.95;
+  letter-spacing:-.025em;
+  margin:0 0 30px;
+  font-variation-settings:"opsz" 144;
+}
+.register h2 em{font-style:italic; color:var(--accent); font-weight:500}
+.register p{font-size:22px; line-height:1.6; max-width:50ch; color:#d6cdb8; margin-bottom:40px}
+.cta{
+  display:inline-flex; align-items:center; gap:18px;
+  padding:22px 36px;
+  background:var(--accent);
+  color:var(--ink);
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border:none;
+  position:relative;
+  overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+}
+.cta:hover{
+  transform:translate(-4px,-4px);
+  box-shadow:8px 8px 0 var(--paper);
+  color:var(--ink);
+}
+.cta .arr{transition:transform .35s}
+.cta:hover .arr{transform:translateX(6px)}
+
+.qr-block{
+  background:var(--paper);
+  padding:30px;
+  display:flex; flex-direction:column; align-items:center;
+  gap:16px;
+  position:relative;
+}
+.qr-block::before{
+  content:"SCAN · REGISTRO · 2026";
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:var(--ink);
+  color:var(--accent);
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.3em;
+  padding:4px 16px;
+}
+.qr-block img{max-width:220px; width:100%; display:block}
+.qr-block .qr-cap{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.2em;
+  color:var(--ink);
+  text-transform:uppercase;
+  text-align:center;
+  opacity:.6;
 }
 
-.info-card ul {
-  display: inline-block;
-  text-align: left; /* Mantiene las viñetas alineadas pero el bloque centrado */
+@media(max-width:880px){
+  .register-inner{grid-template-columns:1fr; gap:50px}
 }
 
-.timeline {
-  border-left: 4px solid #3498db;
-  padding-left: 20px;
-  margin-top: 30px;
-  display: inline-block;
-  text-align: left;
+/* ---------- SPEAKERS ---------- */
+.speakers{
+  background:var(--ink);
+  padding:120px 6vw;
+}
+.speakers-inner{max-width:1400px; margin:0 auto}
+.spk-group-label{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin:60px 0 24px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; align-items:baseline;
+}
+.spk-group-label span:last-child{color:var(--paper-dim); font-size:11px}
+.spk-list{list-style:none; padding:0; margin:0}
+.spk-list li{
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  gap:36px;
+  align-items:center;
+  padding:42px 0;
+  border-bottom:1px solid var(--rule);
+  transition:padding .4s cubic-bezier(.2,.8,.2,1);
+}
+.spk-list li:hover{padding-left:20px; background:linear-gradient(90deg, rgba(168,136,79,.08), transparent)}
+.spk-list .num{
+  font-family:var(--mono);
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:.18em;
+  color:var(--accent);
+}
+.spk-list .name{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(30px, 3.8vw, 48px);
+  letter-spacing:-.015em;
+  line-height:1.1;
+  color:var(--paper);
+}
+.spk-list .aff{
+  font-family:var(--body);
+  font-size:19px;
+  color:#d6cdb8;
+  font-style:normal;
+  display:block;
+  margin-top:12px;
+  font-weight:400;
+  line-height:1.4;
+}
+.spk-list .tag{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  padding:12px 20px;
+  border:1.5px solid var(--rule);
+  color:var(--paper-dim);
+  white-space:nowrap;
+  background:rgba(0,0,0,.25);
+}
+.spk-list .tag.virtual{
+  color:#fff;
+  background:var(--accent-3);
+  border-color:var(--accent-3);
+}
+.spk-list .tag.presencial{
+  color:var(--ink);
+  background:var(--accent);
+  border-color:var(--accent);
 }
 
-.timeline-item {
-  margin-bottom: 25px;
+@media(max-width:680px){
+  .spk-list li{grid-template-columns:40px 1fr; gap:14px}
+  .spk-list .tag{grid-column:2; justify-self:start; margin-top:8px}
 }
 
-.timeline-item h4 {
-  color: #3498db;
-  font-size: 22px;
+/* ---------- PROGRAM ---------- */
+.program{
+  background:var(--paper);
+  color:var(--ink);
+  padding:120px 6vw;
+}
+.program-inner{max-width:1400px; margin:0 auto}
+.program .s-num{color:var(--ink); opacity:.6; font-weight:500}
+.program .s-title{color:var(--ink); font-weight:600}
+.program .s-title em{color:var(--ink); font-weight:700; border-bottom:4px solid var(--accent-2)}
+
+.timeline-grid{
+  border-top:1px solid var(--rule-paper);
+}
+.t-row{
+  display:grid;
+  grid-template-columns:140px 60px 1fr;
+  gap:30px;
+  padding:32px 0;
+  border-bottom:1px solid var(--rule-paper);
+  align-items:start;
+  position:relative;
+  transition:background .3s;
+}
+.t-row:hover{background:rgba(122,31,43,.05)}
+.t-row.break{background:rgba(0,0,0,.03)}
+.t-row.break .t-title{font-style:italic; color:#6a6353}
+.t-time{
+  font-family:var(--mono);
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:.06em;
+  color:var(--ink);
+  padding-top:4px;
+}
+.t-marker{
+  position:relative;
+  height:100%;
+  padding-top:10px;
+}
+.t-marker::before{
+  content:"";
+  position:absolute; left:50%; top:14px;
+  transform:translateX(-50%);
+  width:14px; height:14px;
+  background:var(--accent-2);
+  border-radius:50%;
+  box-shadow:0 0 0 4px var(--paper), 0 0 0 5px var(--accent-2);
+}
+.t-row.break .t-marker::before{background:var(--paper); border:1px solid #6a6353; box-shadow:0 0 0 4px var(--paper)}
+.t-marker::after{
+  content:"";
+  position:absolute; left:50%; top:30px; bottom:-32px;
+  transform:translateX(-50%);
+  width:1px;
+  background:var(--rule-paper);
+}
+.t-row:last-child .t-marker::after{display:none}
+.t-title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:24px;
+  line-height:1.3;
+  color:var(--ink);
+  letter-spacing:-.015em;
+  margin:0 0 10px;
+}
+.t-speaker{
+  font-family:var(--body);
+  font-style:italic;
+  font-size:17px;
+  color:#5a5343;
+  font-weight:400;
 }
 
-.speaker-list li,
-.organizer-list li,
-.sponsor-list li {
-  margin-bottom: 14px;
-  font-size: 19px;
+@media(max-width:680px){
+  .t-row{grid-template-columns:90px 30px 1fr; gap:14px}
 }
 
-/* Estilos para la Sección de Logos - ¡Tamaños Aumentados! */
-.logos-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 40px; /* Un poco más de separación para respirar al ser más grandes */
-  margin-top: 20px;
+/* ---------- SUPPORT / SPONSORS ---------- */
+.support{
+  background:var(--ink);
+  padding:120px 6vw;
+}
+.support-inner{max-width:1400px; margin:0 auto}
+.sup-list{
+  list-style:none; padding:0; margin:0;
+  display:grid; gap:0;
+  border-top:1px solid var(--rule);
+}
+.sup-list li{
+  padding:36px 0;
+  border-bottom:1px solid var(--rule);
+  display:grid;
+  grid-template-columns:60px 1fr;
+  gap:30px;
+  align-items:center;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(20px, 2.4vw, 30px);
+  line-height:1.25;
+}
+.sup-list .ico{
+  width:48px; height:48px;
+  border:1px solid var(--accent);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--accent);
+  font-style:normal;
 }
 
-.logo-item {
-  flex: 1 1 calc(20% - 40px); /* 5 logos por fila en pantallas grandes */
-  min-width: 260px; /* Aumentado para hacerlos más grandes */
-  max-width: 360px; /* Aumentado para hacerlos más grandes */
-  text-align: center;
+/* ---------- ORG ---------- */
+.org-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:0;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.org-card{
+  padding:50px 30px;
+  border-right:1px solid var(--rule);
+  position:relative;
+}
+.org-card:last-child{border-right:none}
+.org-card .role{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:18px;
+}
+.org-card .name{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:32px;
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin:0 0 14px;
+}
+.org-card .aff{
+  font-family:var(--body);
+  font-size:18px;
+  color:#d6cdb8;
 }
 
-.logo-item img {
-  max-width: 100%;
-  height: auto;
-  max-height: 180px; /* Aumentado de 80px a 130px para mayor tamaño */
-  object-fit: contain;
-  filter: grayscale(40%) opacity(85%);
-  transition: all 0.3s ease;
+@media(max-width:780px){
+  .org-grid{grid-template-columns:1fr}
+  .org-card{border-right:none; border-bottom:1px solid var(--rule)}
+  .org-card:last-child{border-bottom:none}
 }
 
-.logo-item img:hover {
-  filter: grayscale(0%) opacity(100%);
-  transform: scale(1.05);
+/* ---------- MSc PROMO ---------- */
+.msc{
+  background:linear-gradient(180deg, var(--ink) 0%, #0f1018 100%);
+  padding:120px 6vw;
+}
+.msc-inner{
+  max-width:1400px; margin:0 auto;
+  display:grid;
+  grid-template-columns:.9fr 1.4fr;
+  gap:80px;
+  align-items:center;
+}
+.msc-img{
+  background:var(--paper);
+  padding:50px;
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.msc-img::before{
+  content:"MSc · YACHAY TECH";
+  position:absolute; top:14px; left:14px;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.25em;
+  color:var(--ink);
+  opacity:.5;
+}
+.msc-img img{max-width:100%; max-height:280px; object-fit:contain}
+.msc-text h2{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:clamp(34px, 4.4vw, 56px);
+  line-height:1.02;
+  letter-spacing:-.025em;
+  margin:0 0 30px;
+}
+.msc-text h2 em{font-style:italic; color:var(--accent); font-weight:500}
+.msc-text p{font-size:20px; line-height:1.6; color:var(--paper); margin-bottom:22px; max-width:55ch}
+.msc-text strong{color:var(--accent)}
+.msc-text a{color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent)}
+.msc-text a:hover{background:var(--accent); color:var(--ink)}
+.msc-contact{
+  margin-top:30px;
+  padding-top:24px;
+  border-top:1px solid var(--rule);
+  font-family:var(--mono);
+  font-size:15px;
+  line-height:1.6;
+  letter-spacing:.04em;
+  color:#d6cdb8;
+}
+.msc-contact div{margin-bottom:8px}
+.msc-contact .k{color:var(--accent); margin-right:10px; font-size:10px; letter-spacing:.2em; text-transform:uppercase}
+
+@media(max-width:880px){
+  .msc-inner{grid-template-columns:1fr}
 }
 
-.footer {
-  background: #111;
-  color: white;
-  text-align: center;
-  padding: 35px 0;
-  font-size: 16px;
+/* ---------- LOGOS BAND ---------- */
+.logos-band{
+  background:var(--paper);
+  padding:60px 6vw;
+  border-top:1px solid var(--rule-paper);
+  border-bottom:1px solid var(--rule-paper);
+}
+.logos-band-label{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--ink);
+  opacity:.5;
+  text-align:center;
+  margin-bottom:40px;
+}
+.logos-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:60px;
+  max-width:1400px;
+  margin:0 auto;
+}
+.logos-row .lg{
+  flex:0 1 200px;
+  display:flex; align-items:center; justify-content:center;
+  height:100px;
+}
+.logos-row img{
+  max-width:100%;
+  max-height:90px;
+  object-fit:contain;
+  filter:grayscale(1) contrast(.9);
+  opacity:.7;
+  transition:filter .4s, opacity .4s, transform .4s;
+}
+.logos-row img:hover{
+  filter:none;
+  opacity:1;
+  transform:scale(1.05);
 }
 
-@media screen and (max-width: 768px) {
-
-  .hero-section h1 {
-    font-size: 38px;
-  }
-
-  .hero-section p {
-    font-size: 20px;
-  }
-  
-  .logo-item {
-    flex: 1 1 calc(33.33% - 40px); /* 3 logos por fila en tablets */
-  }
-
+/* ---------- FOOTER ---------- */
+.foot{
+  background:var(--ink);
+  padding:80px 6vw 40px;
+  border-top:1px solid var(--rule);
+}
+.foot-inner{
+  max-width:1400px; margin:0 auto;
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:60px;
+  align-items:end;
+  margin-bottom:60px;
+}
+.foot h3{
+  font-family:var(--serif);
+  font-weight:300;
+  font-style:italic;
+  font-size:clamp(28px, 3.5vw, 44px);
+  line-height:1.05;
+  margin:0;
+  letter-spacing:-.02em;
+}
+.foot h3 em{color:var(--accent); font-style:italic}
+.foot .meta{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--paper-dim);
+  text-align:right;
+}
+.foot .meta div{margin-bottom:6px}
+.foot .meta .sig{color:var(--accent)}
+.foot-bottom{
+  max-width:1400px; margin:0 auto;
+  padding-top:30px;
+  border-top:1px solid var(--rule);
+  display:flex; justify-content:space-between;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--paper-dim);
 }
 
-@media screen and (max-width: 480px) {
-  .logo-item {
-    flex: 1 1 calc(50% - 40px); /* 2 logos por fila en móviles pequeños */
-  }
+@media(max-width:680px){
+  .foot-inner{grid-template-columns:1fr; text-align:left}
+  .foot .meta{text-align:left}
+  .foot-bottom{flex-direction:column; gap:10px}
 }
+
+/* reveal on scroll */
+.reveal{opacity:0; transform:translateY(30px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1; transform:none}
 
 </style>
 </head>
 
 <body>
 
-<section class="hero-section">
+<!-- TOP STRIP -->
+<div class="topstrip">
+  <div><span class="dot"></span>RISC · GISC · YACHAY TECH</div>
+  <div>EDICIÓN III / 2026</div>
+</div>
 
-  <div class="container animate__animated animate__fadeIn">
+<!-- HERO -->
+<section class="hero">
+  <canvas class="network-canvas" id="netcanvas"></canvas>
 
-    <h1>III Jornadas de Sistemas Complejos y Dinámica Social</h1>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="bar"></span> III Jornadas / 05.06.2026 / Yachay Tech</div>
 
-    <p style="margin-top: 20px; font-weight: bold; letter-spacing: 1px;">
-      Viernes 5 de Junio de 2026
-    </p>
+    <h1>
+      Sistemas<br>
+      <em>Complejos</em> <span class="amp">&amp;</span><br>
+      Dinámica Social
+    </h1>
 
-    <p>
-      Universidad Yachay Tech
-    </p>
-
-  </div>
-
-</section>
-
-<!-- SECCIÓN DE LOGOS -->
-<section class="content-section" style="background-color: #ffffff; border-top: 1px solid #eef2f7;">
-  <div class="container">
-    <div class="logos-container">
-      
-      <div class="logo-item">
-        <img src="images/logo1.jpeg" alt="Logo Institución 1">
+    <div class="hero-meta">
+      <div class="cell">
+        <span class="k">Fecha</span>
+        <span class="v">Vie · 05 Jun 2026</span>
       </div>
-      
-      <div class="logo-item">
-        <img src="images/logo2.jpeg" alt="Logo Institución 2">
+      <div class="cell">
+        <span class="k">Sede</span>
+        <span class="v">Universidad Yachay Tech</span>
       </div>
-      
-      <div class="logo-item">
-        <img src="images/logo3.png" alt="Logo Institución 3">
+      <div class="cell">
+        <span class="k">Modalidad</span>
+        <span class="v">Híbrida · Presencial + Online</span>
       </div>
-      
-      <div class="logo-item">
-        <img src="images/logo4.png" alt="Logo Institución 4">
-      </div>
-      
-      <div class="logo-item">
-        <img src="images/logo5_v2.png" alt="Logo Institución 5">
-      </div>
-      
-    </div>
-  </div>
-</section>
-<!-- Fin sección de logos -->
-
-
-<section class="content-section">
-
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Sobre el Evento</h2>
-    </div>
-
-    <div class="row">
-
-      <div class="col-md-12">
-
-        <div class="info-card">
-
-          <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-            Las <strong>III Jornadas de Sistemas Complejos y Dinámica Social</strong> constituyen un espacio 
-            interdisciplinario diseñado para explorar los avances, metodologías y aplicaciones de las ciencias 
-            de la complejidad en la comprensión de los fenómenos sociales. Tras el éxito de sus dos ediciones 
-            anteriores celebradas en la ciudad de Cuenca, este encuentro científico se traslada a las instalaciones 
-            de Yachay Tech.
-          </p>
-
-          <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-            Esta iniciativa forma parte activa de las agendas de investigación de la <strong>Red Interdisciplinaria de Sistemas Complejos (RISC)</strong>, 
-            organismo registrado y respaldado por la REDU, en conjunto con el <strong>Grupo Interdisciplinario de Sistemas Complejos (GISC)</strong> 
-            afiliado a Yachay Tech.
-          </p>
-
-          <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-            Durante este encuentro, las y los asistentes tendrán la oportunidad de:
-          </p>
-
-          <ul style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-            <li>Asistir a ponencias magistrales dictadas por destacados investigadores nacionales de forma presencial e internacionales vía online.</li>
-            <li>Analizar las dinámicas colectivas y estructuras sociales desde una perspectiva analítica y computacional.</li>
-            <li>Involucrar de manera directa a estudiantes de pregrado y posgrado en la discusión de fronteras del mundo de sistemas complejos.</li>
-          </ul>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="content-section" style="background-color: #eef2f7;">
-
-  <div class="container">
-
-    <div class="row">
-
-      <div class="col-md-6">
-
-        <div class="info-card">
-
-          <h3><i class="fa fa-calendar"></i> ¿Cuándo?</h3>
-
-          <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-            El evento se llevará a cabo en una sola jornada el día <strong>viernes, 5 de Junio de 2026</strong>.
-          </p>
-          
-          <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-            Horario tentativo estructurado en dos bloques:<br>
-            <strong>Mañana:</strong> 9:00 - 12:30<br>
-            <strong>Tarde:</strong> 14:00 - 17:30
-          </p>
-
-        </div>
-
-      </div>
-
-<div class="col-md-6">
-
-        <div class="info-card">
-
-          <h3><i class="fa fa-map-marker"></i> ¿Dónde?</h3>
-
-          <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-            El evento se desarrollará de forma presencial en el aula A17 en el segundo piso del Edif. Senescyt en el campus de la <strong>Universidad Yachay Tech</strong>.
-          </p>
-
-          <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-            Contaremos con un formato híbrido que combinará la participación presencial de invitados nacionales con ponentes internacionales conectados en modalidad online.
-          </p>
-
-          <div style="margin-top: 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4228.685130915174!2d-78.17273988921886!3d0.40674679958755505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2a3b2178d48a75%3A0xcd51389b0c28dfd7!2s%22Edificio%20Senescyt%22%20Universidad%20Yachay%20Tech!5e1!3m2!1sen!2sec!4v1779388366268!5m2!1sen!2sec" 
-              width="100%" 
-              height="300" 
-              style="border:0; display: block;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- Registration section start (Movido aquí) -->
-<section id="registration" class="content-section">
-  <div class="container">
-    <div class="section-title">
-      <h2>Inscripciones</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="info-card">
-
-          <p style="font-size: 22px; font-weight: bold; color: #333; margin-bottom: 25px;">
-            ¿Te interesa participar en este evento académico gratuito?
-            Regístrate ahora utilizando el formulario a continuación.
-          </p>
-
-          <div style="padding: 40px 20px; background: #f8f9fa; border-radius: 10px; border: 1px solid #e1e8ed; margin-top: 20px; text-align: center;">
-            
-            <!-- Imagen del código QR -->
-            <img src="images/qr-sistemas-complejos.png" 
-                 alt="Código QR para registro" 
-                 style="display: block; margin: 0 auto 25px auto; max-width: 200px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-
-            <!-- Botón de registro -->
-            <a href="https://forms.gle/QWffEZeSFnXKt1Bp9"
-               target="_blank"
-               class="btn btn-lg btn-primary"
-               style="padding: 15px 50px; font-size: 22px; border-radius: 50px; background-color: #3498db; border-color: #3498db; font-weight: bold; transition: background 0.2s;">
-              Registrarse Aquí
-            </a>
-            
-          </div>
-
-        </div>
+      <div class="cell">
+        <span class="k">Inscripción</span>
+        <span class="v">Gratuita · Abierta</span>
       </div>
     </div>
   </div>
 </section>
-<!-- Registration section end -->
 
+<!-- ABOUT -->
+<section class="s reveal">
+  <div class="s-num">§ 01 — Manifiesto</div>
+  <h2 class="s-title">Sobre el <em>evento</em>.</h2>
 
-<section class="content-section" style="background-color: #eef2f7;">
+  <div class="about-grid">
+    <aside>
+      <span class="marker">↳ Contexto</span>
+      Un encuentro interdisciplinario sobre los avances, metodologías y aplicaciones de las ciencias de la complejidad aplicadas a fenómenos sociales.
+    </aside>
 
-  <div class="container">
+    <div class="about-text">
+      <p>
+        Las <strong>III Jornadas de Sistemas Complejos y Dinámica Social</strong> constituyen un espacio
+        interdisciplinario diseñado para explorar los avances, metodologías y aplicaciones de las ciencias
+        de la complejidad en la comprensión de los fenómenos sociales. Tras el éxito de sus dos ediciones
+        anteriores celebradas en la ciudad de Cuenca, este encuentro científico se traslada a las instalaciones
+        de Yachay Tech.
+      </p>
 
-    <div class="section-title">
-      <h2>Conferencistas Invitados</h2>
-    </div>
+      <p>
+        Esta iniciativa forma parte activa de las agendas de investigación de la
+        <strong>Red Interdisciplinaria de Sistemas Complejos (RISC)</strong>, organismo registrado y respaldado por la REDU,
+        en conjunto con el <strong>Grupo Interdisciplinario de Sistemas Complejos (GISC)</strong> afiliado a Yachay Tech.
+      </p>
 
-    <div class="info-card">
-
-      <ul class="speaker-list" style="list-style-type: none; padding-left: 0;">
-        <li><i class="fa fa-user" style="color: #3498db; margin-right: 10px;"></i> <strong>Esther Gutiérrez</strong> — Escuela Superior Politécnica del Litoral (ESPOL), Ecuador</li>
-        <li><i class="fa fa-video-camera" style="color: #e74c3c; margin-right: 10px;"></i> <strong>José Luis Herrera-Diestra</strong> (Virtual) — Tarleton State University, USA</li>
-        <li><i class="fa fa-video-camera" style="color: #e74c3c; margin-right: 10px;"></i> <strong>Juan Sebastian Velez</strong> (Virtual) — Okinawa Institute of Technology, Japón</li>
-        <li><i class="fa fa-video-camera" style="color: #e74c3c; margin-right: 10px;"></i> <strong>Mateo Carpio</strong> (Virtual) — Instituto de Física Interdisciplinar y Sistemas Complejos, España</li>
+      <ul>
+        <li>Asistir a ponencias magistrales dictadas por destacados investigadores nacionales de forma presencial e internacionales vía online.</li>
+        <li>Analizar las dinámicas colectivas y estructuras sociales desde una perspectiva analítica y computacional.</li>
+        <li>Involucrar de manera directa a estudiantes de pregrado y posgrado en la discusión de fronteras del mundo de sistemas complejos.</li>
       </ul>
-
     </div>
-
-      <div class="section-title">
-      <h2>Conferencistas Locales</h2>
-    </div>
-
-    <div class="info-card">
-
-      <ul class="speaker-list" style="list-style-type: none; padding-left: 0;">
-        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Orlando Alvarez</strong> — Universidad Católica de Cuenca</li>
-        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Mario Cosenza</strong> — Universidad Yachay Tech</li>
-      </ul>
-
-    </div>
-
   </div>
-
 </section>
 
+<!-- WHEN / WHERE -->
+<section class="paper-panel reveal">
+  <div style="max-width:1400px; margin:0 auto; padding:0 6vw 50px">
+    <div class="s-num">§ 02 — Coordenadas</div>
+    <h2 class="s-title">Cuándo <em>·</em> Dónde.</h2>
+  </div>
 
-<section class="content-section">
+  <div style="max-width:1400px; margin:0 auto; padding:0 6vw">
+    <div class="when-where">
+      <div class="ww-card">
+        <div class="label">Tiempo</div>
+        <h3>Viernes 5 de Junio, 2026</h3>
+        <p>Una jornada intensiva estructurada en dos bloques académicos.</p>
+        <div class="schedule-grid">
+          <span>Mañana</span><span>09:00 — 12:30</span>
+          <span>Tarde</span><span>14:00 — 17:30</span>
+        </div>
+      </div>
+      <div class="ww-card">
+        <div class="label">Espacio</div>
+        <h3>Aula A17 · Edif. SENESCYT</h3>
+        <p>Segundo piso del Edificio SENESCYT en el campus de la <strong>Universidad Yachay Tech</strong>. Formato híbrido: invitados nacionales presenciales y ponentes internacionales en modalidad online.</p>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4228.685130915174!2d-78.17273988921886!3d0.40674679958755505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2a3b2178d48a75%3A0xcd51389b0c28dfd7!2s%22Edificio%20Senescyt%22%20Universidad%20Yachay%20Tech!5e1!3m2!1sen!2sec!4v1779388366268!5m2!1sen!2sec"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div class="container">
+<!-- REGISTRATION -->
+<section class="register reveal" id="registration">
+  <div class="register-inner">
+    <div>
+      <div class="s-num">§ 03 — Inscripción</div>
+      <h2>Regístrate <em>—</em> es gratuito.</h2>
+      <p>¿Te interesa participar en este evento académico gratuito? Escanea el código o pulsa el botón para acceder al formulario oficial.</p>
+      <a class="cta" href="https://forms.gle/QWffEZeSFnXKt1Bp9" target="_blank" rel="noopener">
+        Registrarse aquí
+        <span class="arr">→</span>
+      </a>
+    </div>
+    <div class="qr-block">
+      <img src="images/qr-sistemas-complejos.png" alt="Código QR para registro">
+      <div class="qr-cap">Escanea con tu cámara</div>
+    </div>
+  </div>
+</section>
 
-    <div class="section-title">
-      <h2>Programa Tentativo</h2>
+<!-- SPEAKERS -->
+<section class="speakers reveal">
+  <div class="speakers-inner">
+    <div class="s-num">§ 04 — Ponentes</div>
+    <h2 class="s-title">Conferencistas <em>invitados</em>.</h2>
+
+    <div class="spk-group-label">
+      <span>↳ Internacionales / Nacionales (Invitados)</span>
+      <span>n = 04</span>
     </div>
 
-    <div class="info-card">
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <h4>09:00</h4>
-          <p><strong>Movilidad y propagación de epidemias en redes biológicas y sociales.</strong><br>
-          <em>José Luis Herrera-Diestra (online) — Tarleton State University, USA.</em></p>
+    <ul class="spk-list">
+      <li>
+        <span class="num">01</span>
+        <div>
+          <span class="name">Esther Gutiérrez</span>
+          <span class="aff">Escuela Superior Politécnica del Litoral (ESPOL), Ecuador</span>
         </div>
-
-        <div class="timeline-item">
-          <h4>10:00</h4>
-          <p><strong>Título por confirmar</strong><br>
-          <em>Juan Sebastian Velez (online) — Okinawa Institute of Technology, Japón</em></p>
+        <span class="tag presencial">● Presencial</span>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <div>
+          <span class="name">José Luis Herrera-Diestra</span>
+          <span class="aff">Tarleton State University, USA</span>
         </div>
-
-        <div class="timeline-item">
-          <h4>11:00</h4>
-          <p><strong>Coffee break</strong></p>
+        <span class="tag virtual">◎ Virtual</span>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <div>
+          <span class="name">Juan Sebastián Vélez</span>
+          <span class="aff">Okinawa Institute of Technology, Japón</span>
         </div>
-
-        <div class="timeline-item">
-          <h4>11:30</h4>
-          <p><strong>Competencia de medios de comunicación en dinámica social.</strong><br>
-          <em>Orlando Alvarez — Universidad Católica de Cuenca, Ecuador</em></p>
+        <span class="tag virtual">◎ Virtual</span>
+      </li>
+      <li>
+        <span class="num">04</span>
+        <div>
+          <span class="name">Mateo Carpio</span>
+          <span class="aff">Instituto de Física Interdisciplinar y Sistemas Complejos, España</span>
         </div>
+        <span class="tag virtual">◎ Virtual</span>
+      </li>
+    </ul>
 
-        <div class="timeline-item">
-          <h4>12:30 - 14:00</h4>
-          <p><strong>Receso / Almuerzo</strong></p>
+    <div class="spk-group-label">
+      <span>↳ Locales</span>
+      <span>n = 02</span>
+    </div>
+
+    <ul class="spk-list">
+      <li>
+        <span class="num">05</span>
+        <div>
+          <span class="name">Orlando Álvarez</span>
+          <span class="aff">Universidad Católica de Cuenca</span>
         </div>
-
-        <div class="timeline-item">
-          <h4>14:00</h4>
-          <p><strong>Formación de comunidades en redes adaptativas.</strong><br>
-          <em>Mario Cosenza — Universidad Yachay Tech, Ecuador</em></p>
+        <span class="tag presencial">● Presencial</span>
+      </li>
+      <li>
+        <span class="num">06</span>
+        <div>
+          <span class="name">Mario Cosenza</span>
+          <span class="aff">Universidad Yachay Tech</span>
         </div>
+        <span class="tag presencial">● Presencial</span>
+      </li>
+    </ul>
+  </div>
+</section>
 
-        <div class="timeline-item">
-          <h4>15:00</h4>
-          <p><strong>Patrones lingüísticos en comunidades: una perspectiva desde los sistemas complejos.</strong><br>
-          <em>Mateo Carpio (online) — Instituto de Física Interdisciplinar y Sistemas Complejos, España.</em></p>
+<!-- PROGRAM -->
+<section class="program reveal">
+  <div class="program-inner">
+    <div class="s-num">§ 05 — Cronograma</div>
+    <h2 class="s-title">Programa <em>tentativo</em>.</h2>
+
+    <div class="timeline-grid">
+
+      <div class="t-row">
+        <div class="t-time">09:00</div>
+        <div class="t-marker"></div>
+        <div>
+          <h4 class="t-title">Movilidad y propagación de epidemias en redes biológicas y sociales.</h4>
+          <div class="t-speaker">José Luis Herrera-Diestra (online) — Tarleton State University, USA</div>
         </div>
+      </div>
 
-        <div class="timeline-item">
-          <h4>16:00</h4>
-          <p><strong>Coffee break</strong></p>
+      <div class="t-row">
+        <div class="t-time">10:00</div>
+        <div class="t-marker"></div>
+        <div>
+          <h4 class="t-title">Título por confirmar.</h4>
+          <div class="t-speaker">Juan Sebastián Vélez (online) — Okinawa Institute of Technology, Japón</div>
         </div>
+      </div>
 
-        <div class="timeline-item">
-          <h4>16:30</h4>
-          <p><strong>Competencia sin ganador como mecanismo de organización en sistemas complejos.</strong><br>
-          <em>Esther Gutiérrez — Escuela Superior Politécnica del Litoral (ESPOL), Ecuador</em></p>
+      <div class="t-row break">
+        <div class="t-time">11:00</div>
+        <div class="t-marker"></div>
+        <div>
+          <h4 class="t-title">Coffee break.</h4>
         </div>
+      </div>
 
+      <div class="t-row">
+        <div class="t-time">11:30</div>
+        <div class="t-marker"></div>
+        <div>
+          <h4 class="t-title">Competencia de medios de comunicación en dinámica social.</h4>
+          <div class="t-speaker">Orlando Álvarez — Universidad Católica de Cuenca, Ecuador</div>
+        </div>
+      </div>
+
+      <div class="t-row break">
+        <div class="t-time">12:30 — 14:00</div>
+        <div class="t-marker"></div>
+        <div>
+          <h4 class="t-title">Receso / Almuerzo.</h4>
+        </div>
+      </div>
+
+      <div class="t-row">
+        <div class="t-time">14:00</div>
+        <div class="t-marker"></div>
+        <div>
+          <h4 class="t-title">Formación de comunidades en redes adaptativas.</h4>
+          <div class="t-speaker">Mario Cosenza — Universidad Yachay Tech, Ecuador</div>
+        </div>
+      </div>
+
+      <div class="t-row">
+        <div class="t-time">15:00</div>
+        <div class="t-marker"></div>
+        <div>
+          <h4 class="t-title">Patrones lingüísticos en comunidades: una perspectiva desde los sistemas complejos.</h4>
+          <div class="t-speaker">Mateo Carpio (online) — Instituto de Física Interdisciplinar y Sistemas Complejos, España</div>
+        </div>
+      </div>
+
+      <div class="t-row break">
+        <div class="t-time">16:00</div>
+        <div class="t-marker"></div>
+        <div>
+          <h4 class="t-title">Coffee break.</h4>
+        </div>
+      </div>
+
+      <div class="t-row">
+        <div class="t-time">16:30</div>
+        <div class="t-marker"></div>
+        <div>
+          <h4 class="t-title">Competencia sin ganador como mecanismo de organización en sistemas complejos.</h4>
+          <div class="t-speaker">Esther Gutiérrez — Escuela Superior Politécnica del Litoral (ESPOL), Ecuador</div>
+        </div>
       </div>
 
     </div>
-
   </div>
-
 </section>
 
+<!-- SUPPORT -->
+<section class="support reveal">
+  <div class="support-inner">
+    <div class="s-num">§ 06 — Aval Académico</div>
+    <h2 class="s-title">Con el aval <em>&amp;</em> soporte de.</h2>
 
-<section class="content-section" style="background-color: #eef2f7;">
-
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Con el Aval y Soporte de</h2>
-    </div>
-
-    <div class="info-card">
-
-      <ul class="sponsor-list" style="list-style-type: none; padding-left: 0; text-align: center;">
-        <li style="margin-bottom: 15px;"><i class="fa fa-university" style="color: #3498db; margin-right: 10px;"></i> Red Interdisciplinaria de Sistemas Complejos (RISC) — Apoyada por REDU</li>
-        <li style="margin-bottom: 15px;"><i class="fa fa-flask" style="color: #3498db; margin-right: 10px;"></i> Grupo Interdisciplinario de Sistemas Complejos (GISC) - Universidad Yachay Tech</li>
-        <li style="margin-bottom: 15px;"><i class="fa fa-graduation-cap" style="color: #3498db; margin-right: 10px;"></i> Maestría en Física con mención en Física Fundamental  — Universidad Yachay Tech</li>  
-      </ul>
-
-
-    </div>
-
+    <ul class="sup-list">
+      <li>
+        <span class="ico"><i class="fa fa-university"></i></span>
+        <span>Red Interdisciplinaria de Sistemas Complejos <em>(RISC)</em> — Apoyada por REDU.</span>
+      </li>
+      <li>
+        <span class="ico"><i class="fa fa-flask"></i></span>
+        <span>Grupo Interdisciplinario de Sistemas Complejos <em>(GISC)</em> — Universidad Yachay Tech.</span>
+      </li>
+      <li>
+        <span class="ico"><i class="fa fa-graduation-cap"></i></span>
+        <span>Maestría en Física con mención en Física Fundamental — Universidad Yachay Tech.</span>
+      </li>
+    </ul>
   </div>
-
 </section>
 
+<!-- ORGANIZERS -->
+<section class="s reveal">
+  <div class="s-num">§ 07 — Equipo</div>
+  <h2 class="s-title">Organizadores.</h2>
 
-<section class="content-section">
-
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Organizadores</h2>
+  <div class="org-grid">
+    <div class="org-card">
+      <div class="role">Co-Organizador</div>
+      <h3 class="name">Orlando Álvarez</h3>
+      <div class="aff">Universidad Católica de Cuenca</div>
     </div>
-
-    <div class="info-card">
-
-      <ul class="organizer-list" style="list-style-type: none; padding-left: 0;">
-        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Orlando Alvarez</strong> — Universidad Católica de Cuenca</li>
-        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Mario Cosenza</strong> — Universidad Yachay Tech</li>
-        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Wladimir Banda Barragán</strong> — Universidad Yachay Tech</li>
-      </ul>
-
+    <div class="org-card">
+      <div class="role">Co-Organizador</div>
+      <h3 class="name">Mario Cosenza</h3>
+      <div class="aff">Universidad Yachay Tech</div>
     </div>
-
+    <div class="org-card">
+      <div class="role">Co-Organizador</div>
+      <h3 class="name">Wladimir Banda Barragán</h3>
+      <div class="aff">Universidad Yachay Tech</div>
+    </div>
   </div>
-
 </section>
 
-<section class="content-section" style="background-color: #eef2f7;">
-
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Sobre la MSc en Física con mención en Física Fundamental</h2>
+<!-- MSc PROMO -->
+<section class="msc reveal">
+  <div class="msc-inner">
+    <div class="msc-img">
+      <img src="images/logo5.png" alt="Logo MSc en Física Fundamental">
     </div>
-
-    <div class="info-card">
-
-      <img src="images/logo5.png" 
-           alt="Logo MSc en Física Fundamental" 
-           style="display: block; margin: 0 auto 25px auto; max-height: 240px; max-width: 100%; object-fit: contain;">
-
-      <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-        El programa de Maestría en Física con mención en Física Fundamental de la Universidad Yachay Tech organiza regularmente 
-        seminarios, talleres, escuelas científicas y eventos interdisciplinarios en áreas como 
+    <div class="msc-text">
+      <div class="s-num" style="margin-bottom:18px">§ 08 — Programa de Posgrado</div>
+      <h2>Sobre la <em>MSc</em> en Física<br>con mención en Física Fundamental.</h2>
+      <p>
+        El programa de Maestría en Física con mención en Física Fundamental de la Universidad Yachay Tech organiza regularmente
+        seminarios, talleres, escuelas científicas y eventos interdisciplinarios en áreas como
         astrofísica, cosmología, sistemas complejos, física computacional y aprendizaje automático.
       </p>
-
-      <p style="font-size: 20px; color: #333; max-width: 900px; margin: 25px auto 0 auto; line-height: 1.8;">
-        ¡Te invitamos a formar parte de nuestra comunidad académica! Las inscripciones para el semestre agosto-diciembre 2026 se encuentran abiertas hasta el <strong>31 de julio de 2026</strong>. 
-        Puedes revisar todos los requisitos y postular directamente <a href="https://yachaytech.edu.ec/maestria-en-fisica-mencion-fisica-fundamental/" target="_blank" style="color: #3498db; font-weight: bold; text-decoration: underline;">aquí</a>.
+      <p>
+        ¡Te invitamos a formar parte de nuestra comunidad académica! Las inscripciones para el semestre
+        agosto–diciembre 2026 se encuentran abiertas hasta el <strong>31 de julio de 2026</strong>.
+        Puedes revisar todos los requisitos y postular directamente
+        <a href="https://yachaytech.edu.ec/maestria-en-fisica-mencion-fisica-fundamental/" target="_blank" rel="noopener">aquí</a>.
       </p>
-
-      <ul class="organizer-list" style="list-style-type: none; padding-left: 0;">
-        <li style="margin-bottom: 10px;">
-          <i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Contacto:</strong> Wladimir E. Banda Barragán — Coordinador de la MSc
-        </li>
-        <li>
-          <i class="fa fa-envelope" style="color: #3498db; margin-right: 10px;"></i> 
-          <strong>E-mail:</strong> <a href="mailto:maestriafisicafundamental@yachaytech.edu.ec" style="color: #3498db; text-decoration: none; font-weight: bold; transition: color 0.3s;" onmouseover="this.style.color='#3498db'" onmouseout="this.style.color='#333'">
-            maestriafisicafundamental@yachaytech.edu.ec
-          </a>
-        </li>
-      </ul>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- SECCIÓN DE LOGOS -->
-<section class="content-section" style="background-color: #ffffff; border-top: 1px solid #eef2f7;">
-  <div class="container">
-    <div class="logos-container">
-      
-      <div class="logo-item">
-        <img src="images/logo1.jpeg" alt="Logo Institución 1">
+      <div class="msc-contact">
+        <div><span class="k">Contacto</span> Wladimir E. Banda Barragán — Coordinador de la MSc</div>
+        <div><span class="k">E-mail</span> <a href="mailto:maestriafisicafundamental@yachaytech.edu.ec">maestriafisicafundamental@yachaytech.edu.ec</a></div>
       </div>
-      
-      <div class="logo-item">
-        <img src="images/logo2.jpeg" alt="Logo Institución 2">
-      </div>
-      
-      <div class="logo-item">
-        <img src="images/logo3.png" alt="Logo Institución 3">
-      </div>
-      
-      <div class="logo-item">
-        <img src="images/logo4.png" alt="Logo Institución 4">
-      </div>
-      
-      <div class="logo-item">
-        <img src="images/logo5.png" alt="Logo Institución 5">
-      </div>
-      
     </div>
   </div>
 </section>
-<!-- Fin sección de logos -->
 
-
-
-
-<footer class="footer">
-
-  <div class="container">
-
-    <p style="margin-bottom: 5px; font-weight: bold;">
-      III Jornadas de Sistemas Complejos y Dinámica Social — 2026
-    </p>
-
-    <p style="font-size: 15px; color: #bbb;">
-      RISC | GISC | Maestría en Física con mención en Física Fundamental  de la Universidad Yachay Tech
-    </p>
-
+<!-- LOGOS -->
+<section class="logos-band">
+  <div class="logos-band-label">— Instituciones participantes —</div>
+  <div class="logos-row">
+    <div class="lg"><img src="images/logo1.jpeg" alt="Logo Institución 1"></div>
+    <div class="lg"><img src="images/logo2.jpeg" alt="Logo Institución 2"></div>
+    <div class="lg"><img src="images/logo3.png" alt="Logo Institución 3"></div>
+    <div class="lg"><img src="images/logo4.png" alt="Logo Institución 4"></div>
+    <div class="lg"><img src="images/logo5_v2.png" alt="Logo Institución 5"></div>
   </div>
+</section>
 
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-inner">
+    <h3>III Jornadas de Sistemas Complejos <em>&amp;</em> Dinámica Social — 2026.</h3>
+    <div class="meta">
+      <div class="sig">RISC · GISC</div>
+      <div>MSc Física Fundamental</div>
+      <div>Universidad Yachay Tech</div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2026 — Hecho en Urcuquí, Ecuador</div>
+    <div>v3.0 / 05.06.2026</div>
+  </div>
 </footer>
 
+<script>
+// ====== ANIMATED NETWORK CANVAS ======
+(function(){
+  const canvas = document.getElementById('netcanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [];
+  const COUNT = 130;
+  const MAX_DIST = 200;
 
-<script src="js/jquery-1.8.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+  function resize(){
+    W = canvas.width = canvas.offsetWidth * devicePixelRatio;
+    H = canvas.height = canvas.offsetHeight * devicePixelRatio;
+  }
+  function init(){
+    resize();
+    nodes = [];
+    for(let i=0; i<COUNT; i++){
+      nodes.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        vx:(Math.random()-.5)*0.55*devicePixelRatio,
+        vy:(Math.random()-.5)*0.55*devicePixelRatio,
+        r: (Math.random()*2.2 + 1.1) * devicePixelRatio,
+        phase: Math.random()*Math.PI*2
+      });
+    }
+  }
+  function step(t){
+    ctx.clearRect(0,0,W,H);
+    const max = MAX_DIST*devicePixelRatio;
+    for(let i=0;i<nodes.length;i++){
+      const a = nodes[i];
+      a.x += a.vx; a.y += a.vy;
+      if(a.x<0||a.x>W) a.vx*=-1;
+      if(a.y<0||a.y>H) a.vy*=-1;
+      for(let j=i+1;j<nodes.length;j++){
+        const b = nodes[j];
+        const dx=a.x-b.x, dy=a.y-b.y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<max){
+          const alpha = (1 - d/max) * 0.55;
+          ctx.strokeStyle = 'rgba(200,170,110,'+alpha+')';
+          ctx.lineWidth = 0.8*devicePixelRatio;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for(const n of nodes){
+      const glow = 0.7 + 0.3*Math.sin(t*0.001 + n.phase);
+      // outer halo
+      const grad = ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*5);
+      grad.addColorStop(0,'rgba(230,200,140,'+(0.55*glow)+')');
+      grad.addColorStop(1,'rgba(230,200,140,0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r*5,0,Math.PI*2);
+      ctx.fill();
+      // bright core
+      ctx.fillStyle = 'rgba(245,225,180,'+(0.95*glow)+')';
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fill();
+    }
+    requestAnimationFrame(step);
+  }
+  window.addEventListener('resize', init);
+  init();
+  requestAnimationFrame(step);
+})();
+
+// ====== REVEAL ON SCROLL ======
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 
 </body>
 </html>
