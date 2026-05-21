@@ -92,27 +92,27 @@ body {
   font-size: 19px;
 }
 
-/* Nuevos Estilos para la Sección de Logos */
+/* Estilos para la Sección de Logos - ¡Tamaños Aumentados! */
 .logos-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 40px; /* Un poco más de separación para respirar al ser más grandes */
   margin-top: 20px;
 }
 
 .logo-item {
-  flex: 1 1 calc(20% - 30px); /* 5 logos por fila en pantallas grandes */
-  min-width: 140px;
-  max-width: 180px;
+  flex: 1 1 calc(20% - 40px); /* 5 logos por fila en pantallas grandes */
+  min-width: 180px; /* Aumentado para hacerlos más grandes */
+  max-width: 260px; /* Aumentado para hacerlos más grandes */
   text-align: center;
 }
 
 .logo-item img {
   max-width: 100%;
   height: auto;
-  max-height: 80px; /* Limita la altura para homogeneizar logos de diferentes proporciones */
+  max-height: 130px; /* Aumentado de 80px a 130px para mayor tamaño */
   object-fit: contain;
   filter: grayscale(40%) opacity(85%);
   transition: all 0.3s ease;
@@ -142,14 +142,14 @@ body {
   }
   
   .logo-item {
-    flex: 1 1 calc(33.33% - 20px); /* 3 logos por fila en tablets */
+    flex: 1 1 calc(33.33% - 40px); /* 3 logos por fila en tablets */
   }
 
 }
 
 @media screen and (max-width: 480px) {
   .logo-item {
-    flex: 1 1 calc(50% - 20px); /* 2 logos por fila en móviles pequeños */
+    flex: 1 1 calc(50% - 40px); /* 2 logos por fila en móviles pequeños */
   }
 }
 
@@ -277,26 +277,46 @@ body {
 </section>
 
 
-<section class="content-section">
-
+<!-- Registration section start (Movido aquí) -->
+<section id="registration" class="content-section">
   <div class="container">
-
     <div class="section-title">
-      <h2>Organizadores</h2>
+      <h2>Inscripciones</h2>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="info-card">
 
-    <div class="info-card">
+          <p style="font-size: 22px; font-weight: bold; color: #333; margin-bottom: 25px;">
+            ¿Te interesa participar en nuestras actividades científicas, talleres y eventos académicos?
+            Regístrate ahora utilizando el formulario a continuación.
+          </p>
 
-      <ul class="organizer-list" style="list-style-type: none; padding-left: 0;">
-        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Dr. Orlando Alvarez</strong> — Universidad Católica de Cuenca</li>
-        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Dr. Mario Cosenza</strong> — Universidad Yachay Tech</li>
-      </ul>
+          <div style="padding: 40px 20px; background: #f8f9fa; border-radius: 10px; border: 1px solid #e1e8ed; margin-top: 20px;">
+            <h3 style="margin-bottom: 20px; font-size: 26px; color: #2c3e50; font-weight: bold;">
+              Eventos Científicos y Actividades de Divulgación
+            </h3>
 
+            <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
+              El programa de Maestría en Física Fundamental de la Universidad Yachay Tech organiza regularmente 
+              seminarios, talleres, escuelas científicas y eventos interdisciplinarios en áreas como 
+              astrofísica, cosmología, sistemas complejos, física computacional y aprendizaje automático.
+            </p>
+
+            <a href="https://forms.gle/QWffEZeSFnXKt1Bp9"
+               target="_blank"
+               class="btn btn-lg btn-primary"
+               style="padding: 15px 50px; font-size: 22px; border-radius: 50px; background-color: #3498db; border-color: #3498db; font-weight: bold; transition: background 0.2s;">
+              Registrarse Aquí
+            </a>
+          </div>
+
+        </div>
+      </div>
     </div>
-
   </div>
-
 </section>
+<!-- Registration section end -->
 
 
 <section class="content-section" style="background-color: #eef2f7;">
@@ -383,58 +403,45 @@ body {
 
 </section>
 
-<section id="registration" class="content-section">
+
+<!-- Sección de Organizadores (Movida aquí) -->
+<section class="content-section">
+
   <div class="container">
+
     <div class="section-title">
-      <h2>Inscripciones</h2>
+      <h2>Organizadores</h2>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="info-card">
 
-          <p style="font-size: 22px; font-weight: bold; color: #333; margin-bottom: 25px;">
-            ¿Te interesa participar en nuestras actividades científicas, talleres y eventos académicos?
-            Regístrate ahora utilizando el formulario a continuación.
-          </p>
+    <div class="info-card">
 
-          <div style="padding: 40px 20px; background: #f8f9fa; border-radius: 10px; border: 1px solid #e1e8ed; margin-top: 20px;">
-            <h3 style="margin-bottom: 20px; font-size: 26px; color: #2c3e50; font-weight: bold;">
-              Eventos Científicos y Actividades Académicas
-            </h3>
+      <ul class="organizer-list" style="list-style-type: none; padding-left: 0;">
+        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Dr. Orlando Alvarez</strong> — Universidad Católica de Cuenca</li>
+        <li><i class="fa fa-briefcase" style="color: #3498db; margin-right: 10px;"></i> <strong>Dr. Mario Cosenza</strong> — Universidad Yachay Tech</li>
+      </ul>
 
-            <p style="font-size: 20px; color: #555; max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
-              El programa de Maestría en Física Fundamental de la Universidad Yachay Tech organiza regularmente 
-              seminarios, talleres, escuelas científicas y eventos interdisciplinarios en áreas como 
-              astrofísica, cosmología, sistemas complejos, física computacional y aprendizaje automático.
-            </p>
-
-            <a href="https://forms.gle/QWffEZeSFnXKt1Bp9"
-               target="_blank"
-               class="btn btn-lg btn-primary"
-               style="padding: 15px 50px; font-size: 22px; border-radius: 50px; background-color: #3498db; border-color: #3498db; font-weight: bold; transition: background 0.2s;">
-              Registrarse Aquí
-            </a>
-          </div>
-
-        </div>
-      </div>
     </div>
+
   </div>
+
 </section>
+
+
+<!-- SECCIÓN DE LOGOS -->
 <section class="content-section" style="background-color: #ffffff; border-top: 1px solid #eef2f7;">
   <div class="container">
     <div class="logos-container">
       
       <div class="logo-item">
-        <img src="images/logo1.jpeg" alt="Logo Institución 1">
+        <img src="images/logo1.png" alt="Logo Institución 1">
       </div>
       
       <div class="logo-item">
-        <img src="images/logo2.jpeg" alt="Logo Institución 2">
+        <img src="images/logo2.png" alt="Logo Institución 2">
       </div>
       
       <div class="logo-item">
-        <img src="images/logo3.jpeg" alt="Logo Institución 3">
+        <img src="images/logo3.png" alt="Logo Institución 3">
       </div>
       
       <div class="logo-item">
@@ -448,6 +455,8 @@ body {
     </div>
   </div>
 </section>
+<!-- Fin sección de logos -->
+
 <footer class="footer">
 
   <div class="container">
